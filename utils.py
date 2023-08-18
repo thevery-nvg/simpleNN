@@ -19,11 +19,10 @@ def load_dataset():
 
 
 def save_model(weights_input_to_hidden, weights_hidden_to_output):
-    np.savez('model.npz', weights_hidden_to_output=weights_hidden_to_output, weights_input_to_hidden=weights_input_to_hidden)
+    np.savez('model.npz', weights_hidden_to_output=weights_hidden_to_output,
+             weights_input_to_hidden=weights_input_to_hidden)
 
 
 def load_model():
     with np.load('model.npz') as f:
-        weights_input_to_hidden = f['weights_input_to_hidden']
-        weights_hidden_to_output = f['weights_hidden_to_output']
-        return weights_input_to_hidden, weights_hidden_to_output
+        return f['weights_input_to_hidden'], f['weights_hidden_to_output']
