@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 images, labels = utils.load_dataset()
 weights_input_to_hidden, weights_hidden_to_output = utils.load_model()
 
-bias_input_to_hidden = np.zeros((20, 1))
+bias_input_to_hidden = np.zeros((30, 1))
 bias_hidden_to_output = np.zeros((10, 1))
 
 test_image = random.choice(images)

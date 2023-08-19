@@ -4,16 +4,16 @@ import utils
 
 images, labels = utils.load_dataset()
 
-weights_input_to_hidden = np.random.uniform(-0.5, 0.5, (20, 784))
-weights_hidden_to_output = np.random.uniform(-0.5, 0.5, (10, 20))
+weights_input_to_hidden = np.random.uniform(-0.5, 0.5, (30, 784))
+weights_hidden_to_output = np.random.uniform(-0.5, 0.5, (10, 30))
 
-bias_input_to_hidden = np.zeros((20, 1))
+bias_input_to_hidden = np.zeros((30, 1))
 bias_hidden_to_output = np.zeros((10, 1))
 
-epochs = 3
+epochs = 4
 e_loss = 0
 e_correct = 0
-learning_rate = 0.01
+learning_rate = 0.05
 
 for epoch in range(epochs):
     print(f'Epoch #{epoch}')
