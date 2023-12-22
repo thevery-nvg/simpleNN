@@ -23,11 +23,11 @@ for epoch in range(epochs):
 
         # forward propagation
         hidden_raw = bias_input_to_hidden + weights_input_to_hidden @ image
-        hidden = 1 / (1 + np.exp(-hidden_raw))  # sigmoid
+        hidden = utils.sigmoid(hidden_raw)  
 
         # forward propagation (output layer)
         output_raw = bias_hidden_to_output + weights_hidden_to_output @ hidden
-        output = 1 / (1 + np.exp(-output_raw))  # sigmoid
+        output = utils.sigmoid(output_raw)  
 
         # loss/error calculation
         e_loss += 1 / len(output_raw) * np.sum((output - label) ** 2, axis=0)
