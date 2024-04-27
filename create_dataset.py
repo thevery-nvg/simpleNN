@@ -59,16 +59,18 @@ if __name__ == "__main__":
     data={"x_train":[],"y_train":[]}
     for f in get_all_font_names():
         for num in range(1,10):
-            for size in [25]:
-                image = Image.new("L", (28, 28), color=255)
-                draw = ImageDraw.Draw(image)
-                font = ImageFont.truetype(f, size)  
-                text = str(num)
-                draw.text((14,14),text,font=font,anchor="mm")
-                image = ImageOps.invert(image)
-                #image.save(f'C:\\misc\\python_projects\\simple_neural_network_mnist\\images\\{Path(f).name}{time.time()}.png')
-                data["x_train"].append(np.array(image))
-                data['y_train'].append(num)
+            for size in [25,24,23,22,26]:
+                for x_offset in [0,1,-1]:
+                    for y_offset in [0,1,-1]:
+                        image = Image.new("L", (28, 28), color=255)
+                        draw = ImageDraw.Draw(image)
+                        font = ImageFont.truetype(f, size)  
+                        text = str(num)
+                        draw.text((14+x_offset,14+y_offset),text,font=font,anchor="mm")
+                        image = ImageOps.invert(image)
+                        #image.save(f'C:\\misc\\python_projects\\simple_neural_network_mnist\\images\\{Path(f).name}{time.time()}.png')
+                        data["x_train"].append(np.array(image))
+                        data['y_train'].append(num)
 
     np.savez("new_data.npz",x_train=data['x_train'],y_train=data['y_train'])
                         
